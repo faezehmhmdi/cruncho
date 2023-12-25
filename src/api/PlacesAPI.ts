@@ -1,3 +1,5 @@
+import { Restaurant } from "../reducers/RestaurantReducer";
+
 declare global {
     interface Window {
       google: any;
@@ -32,11 +34,11 @@ declare global {
   
       const request = {
         location: { lat: latitude, lng: longitude },
-        radius: '10000',
+        radius: '1500',
         type: ['restaurant'],
       };
   
-      service.nearbySearch(request, (results: Array<any>, status: string) => {
+      service.nearbySearch(request, (results: Array<Restaurant>, status: string) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
           resolve(results);
         } else {

@@ -1,36 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import { getCurrentLocation } from './utils/locationUtils';
-import { loadGoogleMapsScript, fetchNearbyRestaurants } from './api/PlacesAPI';
+import { RestaurantProvider } from './context/RestaurantContext';
+import RestaurantList from './components/RestaurantList';
+import { loadGoogleMapsScript } from './api/PlacesAPI';
 
 const App = () => {
-  const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-  useEffect(() => {
-    window.initMap = () => {
-      getCurrentLocation()
-        .then(({ latitude, longitude }) => {
-          fetchNearbyRestaurants(latitude, longitude)
-            .then(restaurants => {
-              console.log('Nearby Restaurants:', restaurants);
-            })
-            .catch(error => {
-              console.error('Error fetching restaurants:', error);
-            });
-        })
-        .catch(error => {
-          console.error('Error getting location:', error);
-        });
-    };
+  const [isGoogleMapsLoaded, setIsGoogleMapsLoaded] = useState(false);
 
-    loadGoogleMapsScript(apiKey, 'initMap');
+  useEffect(() => {
+    window.initMap = () => setIsGoogleMapsLoaded(true);
+    loadGoogleMapsScript(process.env.REACT_APP_GOOGLE_API_KEY, 'initMap');
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
+        <RestaurantProvider>
+          {isGoogleMapsLoaded ? (
+            <div>
+              <h1>Nearby Restaurants</h1>
+              <RestaurantList />
+            </div>
+          ) : (
+            <p>Loading Google Maps...</p>
+          )}
+        </RestaurantProvider>
       </header>
     </div>
   );
-}
+};
 
 export default App;
+
