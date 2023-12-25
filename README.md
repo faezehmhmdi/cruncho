@@ -1,4 +1,15 @@
-# Getting Started with Create React App
+# Nearby Restaurants Finder
+
+This project is a Single Page Application (SPA) developed with React. It displays a list of nearby restaurants and their distance from the user's current location.
+
+## Features
+
+- Displays a list of 10 nearby restaurants.
+- Shows the distance of each restaurant from the user's current location.
+- Utilizes Google Places API to fetch restaurant data.
+- Implemented with React and uses `useState` and `useReducer` hooks for state management.
+
+# Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
