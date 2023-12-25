@@ -24,30 +24,30 @@ const StyledRating = styled(Rating)({
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({ restaurant }) => {
   return (
-      <Card variant="outlined" sx={{ marginBottom: 2 }}>
-          <CardContent>
-              <Typography variant="h5" component="div" sx={{ textAlign: 'center' }}>
-                  {restaurant.name}
-              </Typography>
-              {restaurant.distance !== undefined && (
-                    <Typography variant="body2" sx={{ ml: 1 }}>
-                        Distance: {restaurant.distance.toFixed(2)} km
-                    </Typography>
-                )}
-              <Box display="flex" justifyContent="center" alignItems="center" mt={1} mb={1}>
-                  <StyledRating name="read-only" value={restaurant.rating} readOnly />
-                  <Typography sx={{ ml: 1 }} color="text.secondary">
-                      {restaurant.rating.toFixed(1)} ({restaurant.user_ratings_total} reviews)
-                  </Typography>
-              </Box>
-              <Box display="flex" justifyContent="center" alignItems="center">
-                  <LocationOnIcon color="secondary" />
-                  <Typography variant="body2" sx={{ ml: 1 }}>
-                      {restaurant.vicinity}
-                  </Typography>
-              </Box>
-          </CardContent>
-      </Card>
+    <Card variant="outlined" sx={{ marginBottom: 2 }}>
+      <CardContent>
+        <Typography variant="h5" component="div" sx={{ textAlign: 'center' }}>
+          {restaurant.name}
+        </Typography>
+        {restaurant.distance !== undefined && (
+          <Typography variant="body2" sx={{ ml: 1 }}>
+            Distance: {restaurant.distance.toFixed(2)} km
+          </Typography>
+        )}
+        <Box display="flex" justifyContent="center" alignItems="center" mt={1} mb={1}>
+          <StyledRating name="read-only" value={restaurant.rating} readOnly />
+          <Typography sx={{ ml: 1 }} color="text.secondary">
+            {restaurant.rating.toFixed(1)} ({restaurant.user_ratings_total} reviews)
+          </Typography>
+        </Box>
+        <Box display="flex" justifyContent="center" alignItems="center">
+          <LocationOnIcon color="secondary" />
+          <Typography variant="body2" sx={{ ml: 1 }}>
+            {restaurant.vicinity}
+          </Typography>
+        </Box>
+      </CardContent>
+    </Card>
   );
 };
 

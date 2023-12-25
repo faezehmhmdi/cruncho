@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { RestaurantContext } from '../context/RestaurantContext';
 import RestaurantCard from './RestaurantCard';
-import { fetchNearbyRestaurants } from '../api/PlacesAPI'; 
-import { getCurrentLocation } from '../utils/locationUtils'; 
+import { fetchNearbyRestaurants } from '../api/PlacesAPI';
+import { getCurrentLocation } from '../utils/locationUtils';
 
 const RestaurantList = () => {
   const { state, dispatch } = useContext(RestaurantContext);
